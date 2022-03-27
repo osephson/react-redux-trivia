@@ -1,23 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+
+import Entrance from './routes/entrance';
+import Questions from './routes/questions';
+import Result from './routes/result';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='App'>
+      <header className='App-header'>
+        <div style={{ maxWidth: '500px' }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<Entrance />} />
+              <Route path='questions' element={<Questions />} />
+              <Route path='result' element={<Result />} />
+              <Route
+                path='*'
+                element={
+                  <main>
+                    <p>There's nothing here!</p>
+                  </main>
+                }
+              ></Route>
+            </Routes>
+          </BrowserRouter>
+        </div>
       </header>
     </div>
   );
